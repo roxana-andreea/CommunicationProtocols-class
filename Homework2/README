@@ -1,0 +1,35 @@
+Nume: Cazacu Roxana Andreea
+Grupa: 324CC
+
+Cateva precizari legate de implementarea getfile :
+
+1. Nu retin clientii asupra carora am dat infoclient.
+2. Atunci cand primesc getfile trimit infoclient pentru clientul de la care
+trebuie sa primesc fisierul iar daca acesta exista ii trimit un request.
+3. Pentru a implementa acest mesaj a trebuit sa folosesc 2 mesaje auxiliare
+    1. Mesajul begin, care este trimis de la clientul care primeste getfile in consola
+    catre clientul de la care va primi fisierul.
+    2. Mesajul chunk, care reprezinta o bucata de fisier, sau un cod de eroare (vezi implementarea).
+    3. Am trimis bucati de 256 bytes o data.
+    4. Cand se primeste o bucata mai mica decat 256 bytes inseamna ca aceea este ultima bucata
+    din fisier.
+
+Am implementat toata functionalitatea temei facand urmatoarele presupuneri:
+
+1. Un client nu poate fi sender simultan pentru 2 comenzi getfile.
+De exemplu daca avem clientii c1, c2, c3 nu se pot primi simultan comenzile
+getfile c1 fisier1
+getfile c1 fisier2
+
+2. Un client nu poate fi receiver simultan pentru 2 comenzi getfile.
+De exemplu daca avem un client oarecare el nu va primi 2 comenzi getfile decat
+secvential.
+
+Precizari legate de server :
+Serverul mentine 3 structuri de date, si anume 3 map-uri.
+Primul map ( clients ) face o mapare de tip socket pe care scrie clientul la obiectul client asociat. 
+Acest lucru e util pentru ca atunci cand primesc un mesaj de la un client eu stiu dfapt pe ce socket am primit
+si e mai usor pentru mine sa fac update-ul folosind acest map.
+Aceeasi idee se aplica si la shared_files.
+Map-ul client_names mapeaza socket_id la nume_client si este folosit in principal in comanda infoclient.
+

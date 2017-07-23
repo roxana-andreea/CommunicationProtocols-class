@@ -1,0 +1,5 @@
+Nume: Cazacu Roxana Andreea
+Grupa: 324CC
+Implementare:
+
+Am incercat sa implementez folosind pseudocodul din enunt,insa la mine pe calculator cicleaza la infinit (nu iese din functia receive message).Teoretic programul ar trebui sa functioneze si cu timeout la mesaje, si cu corupere (fara log), dar datorita faptului ca nu imi iese din functia receive message nu am avut cum sa testez. Ambele programe (send, recv) isi iau fisierele din care scriu / citesc in linie de comanda.De asemenea am folosit si din scheletul de laborator.
